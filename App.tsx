@@ -3,10 +3,25 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE, Callout } from 'react-native-maps';
 import { Feather } from '@expo/vector-icons';
+import { useFonts } from 'expo-font';
+import { Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold } from '@expo-google-fonts/nunito';
+
 
 import mapMarker from './src/images/map-marker.png';
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    Nunito_600SemiBold,
+    Nunito700: Nunito_700Bold,
+    Nunito_800ExtraBold
+  });
+
+  // se as fontes ainda nao carregaram no app ele vai mostrar uma tela em branca
+  if (!fontsLoaded) {
+      return null;  
+  }
+
   return (
     <View style={styles.container}>
 
@@ -93,6 +108,7 @@ const styles = StyleSheet.create({
 
   footerText: {
     color: '#8fa7b3',
+    fontFamily: ' Nunito_700',
 
   },
 
