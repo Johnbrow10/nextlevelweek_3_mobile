@@ -1,18 +1,24 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE, Callout } from 'react-native-maps';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import {RectButton} from 'react-native-gesture-handler';
 
 import mapMarker from '../images/map-marker.png';
 
 export default function OrphanagesMap() {
     const navigation = useNavigation();
 
-    function handleNavigateToOrphanafeDetails() {
-        navigation.navigate('OrphanageDetails');
-        
+    function handleNavigateToOrphanageDetails() {
+        navigation.navigate('OrphanagesDetails');
+
+    }
+
+    function handleNavigateToCreateOrphanage() {
+        navigation.navigate('SelectMapPosition');
+
     }
 
     return (
@@ -40,7 +46,7 @@ export default function OrphanagesMap() {
                         y: 0.8,
                     }}
                 >
-                    <Callout tooltip onPress={handleNavigateToOrphanafeDetails}>
+                    <Callout tooltip onPress={handleNavigateToOrphanageDetails}>
                         <View style={styles.calloutContainer}>
                             <Text style={styles.calloutText}>Lar dos Guerreiros</Text>
                         </View>
@@ -49,9 +55,9 @@ export default function OrphanagesMap() {
             </MapView>
             <View style={styles.footer}>
                 <Text style={styles.footerText}> 2 Orfanatos encontrados</Text>
-                <TouchableOpacity style={styles.createorphanageButton} onPress={() => { }}>
+                <RectButton style={styles.createorphanageButton} onPress={handleNavigateToCreateOrphanage}>
                     <Feather name="plus" size={20} color="#FFF"></Feather>
-                </TouchableOpacity>
+                </RectButton>
 
             </View>
         </View>
@@ -101,7 +107,7 @@ const styles = StyleSheet.create({
 
     footerText: {
         color: '#8fa7b3',
-        fontFamily: ' Nunito_700',
+        fontFamily: 'Nunito_700Bold',
 
     },
 
