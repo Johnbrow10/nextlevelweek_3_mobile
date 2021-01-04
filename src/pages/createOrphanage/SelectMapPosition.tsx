@@ -24,8 +24,8 @@ export default function SelectMapPosition() {
                 initialRegion={{
                     latitude: -23.7239963,
                     longitude: -46.7579951,
-                    latitudeDelta: 0.008,
-                    longitudeDelta: 0.008,
+                    latitudeDelta: 0.009,
+                    longitudeDelta: 0.009,
                 }}
                 style={styles.mapStyle}
                 onPress={handleSelectMapPosition}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 
     mapStyle: {
         width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
+        height: Dimensions.get("screen").height,
     },
 
     nextButton: {

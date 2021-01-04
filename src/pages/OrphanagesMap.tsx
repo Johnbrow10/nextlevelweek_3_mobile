@@ -21,12 +21,11 @@ export default function OrphanagesMap() {
     const navigation = useNavigation();
 
     useFocusEffect(() => {
-        api.get('/orphanages').then(response => {
+        api.get("orphanages").then(response => {
             setOrphanages(response.data);
         });
-    },);
+    });
 
-    console.log(orphanages.length)
 
     function handleNavigateToOrphanageDetails(id: number) {
         navigation.navigate('OrphanagesDetails', { id });
@@ -39,27 +38,26 @@ export default function OrphanagesMap() {
 
     return (
         <View style={styles.container}>
-
             <MapView
                 style={styles.map}
                 provider={PROVIDER_GOOGLE}
                 initialRegion={{
                     latitude: -23.7239963,
                     longitude: -46.7579951,
-                    latitudeDelta: 0.009,
-                    longitudeDelta: 0.009,
+                    latitudeDelta: 0.011,
+                    longitudeDelta: 0.011,
 
                 }}
             >
-
                 {orphanages.map(orphanage => {
                     return (
                         <Marker
                             key={orphanage.id}
                             icon={mapMarker}
                             coordinate={{
-                                latitude: orphanage.latitude,
                                 longitude: orphanage.longitude,
+                                latitude: orphanage.latitude,
+
                             }}
                             calloutAnchor={{
                                 x: 2.7,
@@ -72,10 +70,10 @@ export default function OrphanagesMap() {
                                 </View>
                             </Callout>
                         </Marker>
-                    );
-                })};
-
+                    )
+                })}
             </MapView>
+
             <View style={styles.footer}>
                 <Text style={styles.footerText}> {orphanages.length} Orfanatos encontrados</Text>
                 <RectButton style={styles.createorphanageButton} onPress={handleNavigateToCreateOrphanage}>
@@ -84,7 +82,7 @@ export default function OrphanagesMap() {
 
             </View>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

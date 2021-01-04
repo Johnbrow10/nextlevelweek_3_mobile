@@ -6,7 +6,7 @@ import { RectButton, TouchableOpacity } from "react-native-gesture-handler";
 import { useRoute } from "@react-navigation/native";
 
 import mapMarkerImg from "../images/map-marker.png";
- import api from "../services/api";
+import api from "../services/api";
 
 interface OrphanageDetailsRouteParams {
     id: number;
@@ -115,10 +115,7 @@ export default function OrphanageDetails() {
                 <View style={styles.scheduleContainer}>
                     <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
                         <Feather name="clock" size={40} color="#2AB5D1" />
-
-                        <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>
-                            Segunda à Sexta
-                            {orphanage.opening_hours}
+                        <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Segunda à Sexta {orphanage.opening_hours}
                         </Text>
                     </View>
 
